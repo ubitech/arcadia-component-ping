@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>eu.arcadia</groupId>
+    <artifactId>ping</artifactId>
+    <name>ping</name>
+    <version>0.1.0-SNAPSHOT</version>
+    
+    <properties>
+        <!-- mojo settings -->
+        <maven.compiler.plugin>3.3</maven.compiler.plugin>
+        <maven.test.plugin>2.19</maven.test.plugin>        
+        <!-- basic project settings-->
+        <project.source.charset>UTF-8</project.source.charset>
+        <project.source.encoding>UTF-8</project.source.encoding>
+        <java.version.source>1.8</java.version.source>
+        <java.version.target>1.8</java.version.target>
+        <!-- Microservice -->
+        <org.springframework.boot>1.3.2.RELEASE</org.springframework.boot>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+
+    <dependencies>
+        <!-- arcadia internal dependencies -->
+        <dependency>
+            <groupId>eu.arcadia</groupId>
+            <artifactId>annotation-libs</artifactId>
+            <version>1.0.0.RC1</version>
+        </dependency>
+
+        <!-- SpringBoot -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>${org.springframework.boot}</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <!-- UniRest -->
+        <dependency>
+            <groupId>com.mashape.unirest</groupId>
+            <artifactId>unirest-java</artifactId>
+            <version>1.4.8</version>
+        </dependency>
+
+        <!-- Json -->
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.6.2</version>
+        </dependency>
+
+    </dependencies>
+
+    <build>       
+        <finalName>${project.artifactId}</finalName>                
+        <plugins>
+
+            <!-- mvn clean package spring-boot:repackage -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <!-- Global Repository Settings -->  
+    <repositories>
+        <!-- Maven Central -->
+        <repository>
+            <id>MavenCentral</id>
+            <name>Maven repository</name>
+            <url>http://repo1.maven.org/maven2</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>  
+        <!-- Spring -->
+        <repository>
+            <id>spring-snapshots</id>
+            <url>http://repo.spring.io/snapshot</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>spring-milestones</id>
+            <url>http://repo.spring.io/milestone</url>
+        </repository> 
+        <!-- ARCADIA Repository --> 
+        <repository>
+            <id>arcadia-repo</id>
+            <name>Arcadia Repository</name>
+            <url>http://ci.arcadia-framework.eu/nexus/content/repositories/thirdparty/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>                                                                                              
+    </repositories> 
+
+</project>

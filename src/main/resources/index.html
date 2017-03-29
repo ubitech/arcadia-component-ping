@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Ping web app</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1>Welcome to Ping web application</h1>
+        <br/>
+        Total pings: %s
+        <br/>Total pongs: %s
+        <br/><br/>
+        <button onClick="ping()">Ping</button>
+    </body>
+    <script type="text/javascript">
+        function ping() {
+            var http = new XMLHttpRequest();
+            var url = "/ping";
+            http.open("POST", url, true);
+
+            http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+            http.onreadystatechange = function () {//Call a function when the state changes.
+                if (http.readyState == 4 && http.status == 200) {
+                    alert(http.responseText);
+                    location.reload();
+                }
+            }
+            http.send();
+        }
+    </script>
+</html>
